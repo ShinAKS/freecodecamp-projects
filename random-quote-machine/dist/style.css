@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;500&display=swap');
+
+:root{
+  --default-color:  #fff;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "Raleway",sans-seriff;
+  background-color: var(--default-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  transition: all 1s ease-in;
+}
+
+#quote-box{
+  min-height : 200px;
+  width: 38vw;
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  transition: all 1s ease-in;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#text{
+  font-size: 1.5em;
+  max-width: 70%;
+  text-align: center;
+  color: var(--default-color);
+  transition: all 1s ease-in;
+  padding: 10px;
+}
+
+#author{
+  font-weight: 200;
+  margin: 2% 0;
+  color: var(--default-color);
+  transition: all 1s ease-in;
+
+}
+
+#new-quote,#tweet-quote{
+  position: absolute;
+  bottom: 1%;
+  background-color: var(--default-color);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 3px;
+  transition: all 1s ease-in;
+}
+
+#new-quote{
+  right: 1%;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+#tweet-quote{
+  font-size: 1.5em;
+  left: 1%;
+  text-decoration: none;
+}
+
+button:focus{
+  cursor: pointer;
+  outline: none;
+}
+
+.attribution{
+  color: #fff;
+  position: absolute;
+  top: 120%;
+  font-weight: 200;
+}

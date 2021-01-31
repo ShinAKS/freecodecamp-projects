@@ -1,0 +1,54 @@
+ function setBackground(){
+    const color = '#'+'4' + (Math.random()).toString(16).slice(2,7);
+    document.documentElement.style.setProperty('--default-color',color );
+  }
+class QuoteBox extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      count: 0,
+      loading: true,
+      quotes: []
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+  componentDidMount(){
+    fetch("https://type.fit/api/quotes")
+        .then(res => res.json())
+        .then(data=>{
+          debugger;
+          data = data.slice(0,100);   
+          this.setState({loading:false,quotes: data});
+        });
+    setBackground();
+  }
+  
+  handleClick(e){
+    e.preventDefault();
+    this.setState({count: Math.floor(Math.random()*100)});
+    setBackground();
+  }
+  
+  render(){
+    let count = this.state.count;
+    return(
+      <div id="quote-box">
+        {this.state.loading
+          ? <i className="fa fa-cog fa-spin fa-3x fa-fw" />
+          :
+         <>
+          <div id="text"><i class="fas fa-quote-left"></i> {this.state.quotes[count].text} <i class="fas fa-quote-right"></i></div>
+          <div id="author">{this.state.quotes[count].author?this.state.quotes[count].author: ""}</div>
+          <button id="new-quote" onClick={this.handleClick}>New quote</button>
+          <a id="tweet-quote" href="twitter.com/intent/tweet" target="_blank"><i class="fab fa-twitter"></i>
+
+</a>
+         </>
+        }
+        <div class="attribution">by Ayush Sinha</div>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<QuoteBox/>,document.getElementById('root'));
